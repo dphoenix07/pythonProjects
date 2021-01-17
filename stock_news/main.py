@@ -7,13 +7,13 @@ COMPANY_NAME = "Tesla Inc"
 STOCK_ENDPOINT = "https://www.alphavantage.co/query"
 NEWS_ENDPOINT = "https://newsapi.org/v2/everything"
 
-NEWS_API_KEY = "ca078bf4a5eb4856a1aa8b1cdaf9bad9"
+NEWS_API_KEY = "********"
 news_parameters = {
     "qInTitle": COMPANY_NAME,
     "apiKey": NEWS_API_KEY
 }
 
-STOCK_API_KEY = 'AINB644NNUQM4606'
+STOCK_API_KEY = '********'
 stock_parameters = {
     "function": "TIME_SERIES_DAILY",
     "symbol": STOCK_NAME,
