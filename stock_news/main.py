@@ -20,8 +20,8 @@ stock_parameters = {
     "apikey": STOCK_API_KEY
 }
 
-TWILIO_SID = "AC75a69cf3f04be0994dcf47cf73238b8f"
-TWILIO_TOKEN = "4022dba396eacb45f49321d5710cebaa"
+TWILIO_SID = "********"
+TWILIO_TOKEN = "********"
 
 
 response = requests.get(STOCK_ENDPOINT, params=stock_parameters)
