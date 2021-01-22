@@ -1,6 +1,7 @@
 import requests
+
 SEARCH_ENDPOINT = "https://tequila-api.kiwi.com"
-api_key = "********"
+api_key = "*********"
 
 
 class FlightSearch:
