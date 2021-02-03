@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 
+### Notes on Webscraping
 # with open("website.html") as file:
 #     content = file.read()
 #
@@ -32,32 +33,50 @@ import requests
 # print(headings)
 
 
-response = requests.get("https://news.ycombinator.com/news")
-yc_webpage = response.text
+#### More Notes on Webscraping
+# response = requests.get("https://news.ycombinator.com/news")
+# yc_webpage = response.text
+#
+# soup = BeautifulSoup(yc_webpage, "html.parser")
+# print(soup.title)
+# articles = soup.find_all(name="a", class_="storylink")
+#
+# article_texts = []
+# article_links = []
+# for article_tag in articles:
+#     text = article_tag.getText()
+#     article_texts.append(text)
+#     link = article_tag.get("href")
+#     article_links.append(link)
+#
+# article_upvote = [int(score.getText().split()[0]) for score in soup.find_all(name="span", class_="score")]
+#
+#
+# print(article_texts)
+# print(article_links)
+# print(article_upvote)
+#
+# max_upvote = max(article_upvote)
+# print(max_upvote)
+#
+# largest_index = article_upvote.index(max_upvote)
+#
+# print(article_texts[largest_index])
+# print(article_links[largest_index])
 
-soup = BeautifulSoup(yc_webpage, "html.parser")
-print(soup.title)
-articles = soup.find_all(name="a", class_="storylink")
 
-article_texts = []
-article_links = []
-for article_tag in articles:
-    text = article_tag.getText()
-    article_texts.append(text)
-    link = article_tag.get("href")
-    article_links.append(link)
+URL = "https://www.empireonline.com/movies/features/best-movies-2/"
 
-article_upvote = [int(score.getText().split()[0]) for score in soup.find_all(name="span", class_="score")]
+response = requests.get(URL)
+website_html = response.text
+soup = BeautifulSoup(website_html, "html.parser")
 
+all_movies = soup.find_all(name="h3", class_="title")
+print(all_movies)
 
-print(article_texts)
-print(article_links)
-print(article_upvote)
+movie_titles = [movie.getText() for movie in all_movies]
+movies = movie_titles[::-1]
 
-max_upvote = max(article_upvote)
-print(max_upvote)
-
-largest_index = article_upvote.index(max_upvote)
-
-print(article_texts[largest_index])
-print(article_links[largest_index])
+with open("movies.txt", mode="w") as file:
+    for movie in movies:
+        file.write(f"{movie}\n")
